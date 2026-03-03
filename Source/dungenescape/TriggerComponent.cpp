@@ -16,6 +16,24 @@ void UTriggerComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogTemp, Display, TEXT("TriggerComponent::BeginPlay()"));
+	if (MoverActor)
+	{
+		 Mover = MoverActor->FindComponentByClass<UMover>();
+		 if (Mover)
+		 {
+			 UE_LOG(LogTemp, Display, TEXT("MoverFound"));
+		 	 Mover->ShouldMove = true;
+		 }
+		 else
+		 {
+			 UE_LOG(LogTemp, Error, TEXT("Mover Not Found"));
+		 }
+	}
+	else
+	{
+		UE_LOG(LogTemp,Display, TEXT("MoverActor is not Found"));
+	}
+	
 }
 
 
